@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import Footer from './Footer'
+
 const api = {
   key: "e11a71a61510280f06bc08016a46b9ef",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -8,26 +11,33 @@ const api = {
 
 function App() {
   const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({
-    temp: null,
-    city: null,
-    condition: null,
-    country: null
-  });
+  const [weather, setWeather] = useState({});
 
-  const search = evt => {
+  function fetchData() {
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then(res => res.json())
+      .then(result => {
+        setWeather(result);
+        setQuery('');
+        console.log(result);
+      })
+      .catch(error => {
+        <h1>porfavor ingresa un pais correcto</h1> 
+      })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const searchEnterKey = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
-          setWeather(result);
-          setQuery('');
-          console.log(result);
-        })
-        .catch(error => {
-          <h1>porfavor ingresa un pais correcto</h1> 
-        })
+      fetchData()
     }
+  }
+
+  const handleClick = () => {
+    fetchData()
   }
 
   const dateBuilder = (d) => {
@@ -52,17 +62,18 @@ function App() {
             placeholder="City, Country..."
             onChange={e => setQuery(e.target.value)}
             value={query}
-            onKeyPress={search}
+            onKeyPress={searchEnterKey}
           />
+          <button class="btn"><i class="fa fa-search" onClick={handleClick}></i></button>
         </div>
         {(typeof weather.main != "undefined") ? (
-        <div>
+        <div className="location-container">
           <div className="location-box">
             <div className="location">{weather.name}, {weather.sys.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">
-            <div className={(weather.weather[0].main === "Rain") ? "temp-warm" : "temp"}>
+            <div className={(weather.weather[0].main == "Rain") ? "temp-warm" : "temp"}>
               {Math.round(weather.main.temp)}°c
             <div className="humidity">
               humedad: {weather.main.humidity}%
