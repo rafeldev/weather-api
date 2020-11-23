@@ -14,6 +14,13 @@ Descubre el clima en cualquier ciudad.
 - OpenWeatherMap
 - CSS
 
+## Plus 🤭
+- Card animation when it is raining
+
+- React / Hooks
+- OpenWeatherMap
+- CSS
+
 ## Installation 🔨
 
 1. **Clone Project**: 
