@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Hero from './Hero'
 
@@ -11,7 +11,12 @@ const api = {
 
 function App() {
   const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState({
+    temp: null,
+    city: null,
+    condition: null,
+    country: null
+  });
 
   function fetchData() {
     fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -19,16 +24,11 @@ function App() {
       .then(result => {
         setWeather(result);
         setQuery('');
-        console.log(result);
       })
       .catch(error => {
         return error ('error')
       })
   }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
 
   const searchEnterKey = evt => {
     if (evt.key === "Enter") {
@@ -39,6 +39,8 @@ function App() {
   const handleClick = () => {
     fetchData()
   }
+  
+
 
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -64,7 +66,7 @@ function App() {
             value={query}
             onKeyPress={searchEnterKey}
           />
-          <button class="btn"><i class="fa fa-search" onClick={handleClick}></i></button>
+          <button className="btn"><i className="fa fa-search" onClick={handleClick}></i></button>
         </div>
         {(typeof weather.main != "undefined") ? (
         <div className="location-container">
@@ -78,7 +80,7 @@ function App() {
             <div className="humidity">
               humedad: {weather.main.humidity}%
             </div>
-            <img className="icon" src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} />
+            <img className="icon" alt="img" src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} />
             <div className="weather">{weather.weather[0].main}</div>
             </div>
           </div>
