@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Footer from './Footer'
+import Hero from './Hero'
 
 const api = {
   key: "e11a71a61510280f06bc08016a46b9ef",
@@ -22,7 +22,7 @@ function App() {
         console.log(result);
       })
       .catch(error => {
-        <h1>porfavor ingresa un pais correcto</h1> 
+        return error ('error')
       })
   }
 
@@ -73,7 +73,7 @@ function App() {
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">
-            <div className={(weather.weather[0].main == "Rain") ? "temp-warm" : "temp"}>
+            <div className={(weather.weather[0].main === "Rain") ? "temp-warm" : "temp"}>
               {Math.round(weather.main.temp)}°c
             <div className="humidity">
               humedad: {weather.main.humidity}%
@@ -83,7 +83,7 @@ function App() {
             </div>
           </div>
         </div>
-        ) : ('')}
+        ) : (<Hero />)}
       </main>
     </div>
   );

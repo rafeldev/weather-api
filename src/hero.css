@@ -1,0 +1,34 @@
+.contain-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 600px;
+  padding: 20px;
+  margin: 0 auto;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.hero-text {
+  color: white;
+  font-size: 1.125em;
+  width: 40%;
+}
+
+.hero-text h1 {
+  margin-bottom: 10px;
+}
+.hero-text p {
+  font-weight: 400;
+}
+
+.hero-img {
+  width: 40%;
+}
+
+.hero-img .svg-hero {
+  width: 90%;
+  margin: auto;
+}
