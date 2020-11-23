@@ -15,11 +15,8 @@ Descubre el clima en cualquier ciudad.
 - CSS
 
 ## Plus 🤭
-- Card animation when it is raining
 
-- React / Hooks
-- OpenWeatherMap
-- CSS
+- Card animation when it is raining
 
 ## Installation 🔨
 
