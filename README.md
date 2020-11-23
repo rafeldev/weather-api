@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Weather Api
 ![Image of Comeet-cat](https://github.com/rafeldev/weather-api/blob/master/src/assets/1.png)
-![Image of Comeet-cat](https://github.com/rafeldev/weather-api/blob/master/src/assets/2.png)
+![Image of Comeet-cat](https://github.com/rafeldev/weather-api/blob/master/src/assets/Screenshot%202020-11-23%20142950.png)
 
 Descubre el clima en cualquier ciudad.
 
