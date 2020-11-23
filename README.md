@@ -2,8 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Comeet Cat
+# Weather Api
 ![Image of Comeet-cat](https://github.com/rafeldev/weather-api/blob/master/src/assets/1.png)
+![Image of Comeet-cat](https://github.com/rafeldev/weather-api/blob/master/src/assets/2.png)
 
 Descubre el clima en cualquier ciudad.
 
